@@ -1,4 +1,3 @@
-#login system
 users = {}
 
 print("Welcome to the login system!")
