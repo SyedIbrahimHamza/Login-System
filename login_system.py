@@ -5,7 +5,7 @@ while True:
     print("Please choose an option:")
     print("1. Register")
     print("2. Login")
-    print("3. Exit")
+    print("3. Exit") 
     choice = input("Enter your choice (1, 2, or 3): ")
     while choice not in ['1', '2', '3']:
         print("invalid choice. Please try again.")
