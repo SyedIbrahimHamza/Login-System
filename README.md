@@ -1,6 +1,8 @@
 Login System
 
-A simple terminal-based Login System built with Python. The program provides a basic menu-driven interface that allows users to register with a username and password. It also validates the user's menu choice and prevents duplicate usernames.
+A simple terminal-based Login System built with Python. The program provides a basic menu-driven interface that allows users to register with a username and password and log in using their registered credentials.
+
+The program validates the user's menu choice, prevents duplicate usernames, stores user information in a Python dictionary, and verifies login credentials.
 
 What It Does
 
@@ -13,13 +15,17 @@ Store user information using a Python dictionary
 Take username and password input
 Register new users
 Prevent duplicate usernames
+Login using registered credentials
+Verify usernames and passwords
+Display login success or failure messages
 Current Features
 Option	Feature	Status
 1	Register	✅ Complete
-2	Login	🚧 In Progress
+2	Login	✅ Complete
 3	Menu Choice Validation	✅ Complete
 4	User Dictionary	✅ Complete
 5	Duplicate Username Check	✅ Complete
+6	Login Verification	✅ Complete
 How to Run
 
 Make sure Python is installed on your computer.
@@ -78,7 +84,7 @@ The program asks the user for:
 Username
 Password
 
-The username is then checked to make sure it does not already exist in the users dictionary.
+The username is checked to make sure it does not already exist in the users dictionary.
 
 Example
 Enter your choice (1 or 2): 1
@@ -101,28 +107,49 @@ Enter a username: Ahmed
 
 This prevents multiple users from being registered with the same username.
 
+The check is performed using:
+
+while username in users:
+    print("Username already exists. Please try again.")
+    username = input("Enter a username: ")
+
 Login
 
-The login option is displayed in the menu, but the login functionality has not yet been implemented.
+Select 2 to log in with an existing username and password.
 
-The planned login feature will ask for:
+The program asks for:
 
 Username
 Password
 
-It will then check whether the username exists and whether the password matches the stored password.
+It then checks whether the username exists and whether the entered password matches the stored password.
 
-Planned successful login:
-
+Successful Login
 Enter your choice (1 or 2): 2
-Enter username: Ali
-Enter password: 12345
-Login successful.
+Enter your username: Ali
+Enter your password: 12345
+Login successful!
 
 
-Planned failed login:
+The login is verified using:
+
+if username in users and users[username] == password:
+    print("Login successful!")
+
+Failed Login
+
+If the username does not exist or the password is incorrect, the program displays:
 
 Invalid username or password.
+
+
+The program uses:
+
+else:
+    print("Invalid username or password.")
+
+
+This prevents the user from logging in with incorrect credentials.
 
 Menu Choice Validation
 
@@ -155,6 +182,49 @@ while username in users:
 
 This means a username cannot be registered more than once.
 
+Login Verification
+
+The login system checks two conditions:
+
+The username exists in the users dictionary.
+The password matches the password stored for that username.
+
+This is done with:
+
+if username in users and users[username] == password:
+    print("Login successful!")
+else:
+    print("Invalid username or password.")
+
+
+For example, if the dictionary contains:
+
+users = {
+    'Ali': '12345'
+}
+
+
+Entering:
+
+Username: Ali
+Password: 12345
+
+
+will result in:
+
+Login successful!
+
+
+But entering the wrong password:
+
+Username: Ali
+Password: 99999
+
+
+will result in:
+
+Invalid username or password.
+
 Python Concepts Used
 
 This project practices the following Python concepts:
@@ -162,26 +232,28 @@ This project practices the following Python concepts:
 Dictionaries — storing usernames and passwords
 Lists — storing valid menu choices
 While loops — repeatedly asking for valid input
-Conditional statements — handling different menu choices
+Conditional statements — handling registration and login
 User input — using input() to receive information
 Strings — handling usernames, passwords, and messages
-Dictionary lookup — checking whether a username already exists
+Dictionary lookup — checking whether a username exists
 Dictionary assignment — storing a new username and password
+Logical operators — checking multiple login conditions using and
+Comparison operators — comparing the entered password with the stored password
 Functions
 
-Custom functions such as:
+The current version does not use custom functions such as:
 
 def register():
 
 
-and:
+or:
 
 def login():
 
 
-have not yet been added.
+The registration and login logic is currently written directly in the main program.
 
-They can be introduced in a future version to make the program more organized and easier to maintain.
+Functions can be introduced in a future version to make the program more organized, reusable, and easier to maintain.
 
 What I Learned
 
@@ -196,52 +268,60 @@ Checking whether a value exists inside a list
 Checking whether a key exists in a dictionary
 Storing username and password data
 Using conditional logic
+Using the and logical operator
 Preventing duplicate usernames
-Planning a login and registration system
+Verifying login credentials
+Handling successful and failed login attempts
+Building a basic terminal-based authentication system
 Project Status
 
 This project is currently in progress.
 
 Implemented Features
- Welcome message
- Register and Login menu
- User dictionary created
- Menu choice validation
- Invalid choice handling
- Repeated input using a while loop
- Username input
- Password input
- Store username and password
- Prevent duplicate usernames
+✅ Welcome message
+✅ Register and Login menu
+✅ User dictionary
+✅ Menu choice validation
+✅ Invalid choice handling
+✅ Repeated input using a while loop
+✅ Username input
+✅ Password input
+✅ Store username and password
+✅ Prevent duplicate usernames
+✅ Login functionality
+✅ Username verification
+✅ Password verification
+✅ Login success message
+✅ Login failure message
 Not Yet Implemented
- Login user
- Verify username
- Verify password
- Login success message
- Login failure message
- Exit option
- Logout option
- Functions for registration and login
- Empty username validation
- Empty password validation
- Password confirmation
- Maximum login attempts
+❌ Exit option
+❌ Logout option
+❌ Functions for registration and login
+❌ Empty username validation
+❌ Empty password validation
+❌ Password confirmation
+❌ Maximum login attempts
+❌ Login retry system
+❌ Persistent user storage
+❌ Password encryption/hashing
 Future Improvements
 
 Planned improvements include:
 
 Add a register() function
 Add a login() function
-Implement login verification
+Add an exit option
+Add a logout option
 Validate empty usernames
 Validate empty passwords
 Add password confirmation during registration
-Add an exit option
-Add a logout option
-Improve error messages
 Allow users to retry incorrect login credentials
 Add a maximum number of login attempts
+Improve error messages
 Improve the overall terminal interface
+Store users permanently using a file or database
+Hash passwords instead of storing them as plain text
+Add a main program loop so users can register and log in multiple times
 Technologies Used
 Python
 Dictionaries
@@ -251,6 +331,7 @@ Conditional statements
 input()
 Strings
 Dictionary operations
+Logical operators
 Author
 
-Built as a Python practice project to learn the fundamentals of dictionaries, lists, loops, user input, input validation, and the basic structure of a login and registration system.
+Built as a Python practice project to learn the fundamentals of dictionaries, lists, loops, user input, input validation, conditional logic, and the basic structure of a login and registration system.
