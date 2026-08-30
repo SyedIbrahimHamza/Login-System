@@ -12,8 +12,11 @@ while True:
         choice = input("Enter your choice (1, 2, or 3): ")
     if choice == '1':
         username = input("Enter a username: ")
-        while username in users:
-            print("Username already exists. Please try again.")
+        while username == "" or username in users:
+            if username == "":
+                print("Username cannot be empty.")
+            else:
+                print("Username already exists. Please try again.")
             username = input("Enter a username: ")
         password = input("Enter a password: ")
         users[username] = password
