@@ -17,6 +17,7 @@ while True:
             username = input("Enter a username: ")
         password = input("Enter a password: ")
         users[username] = password
+        print("Registration successful!")
     elif choice == '2':
         username = input("Enter your username: ")
         password = input("Enter your password: ")
