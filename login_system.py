@@ -1,5 +1,5 @@
+users = {}
 while True:
-    users = {}
 
     print("Welcome to the login system!")
     print("Please choose an option:")
