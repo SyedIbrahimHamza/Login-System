@@ -1,7 +1,7 @@
 users = {}
-while True:
+print("Welcome to the login system!")
 
-    print("Welcome to the login system!")
+while True:
     print("Please choose an option:")
     print("1. Register")
     print("2. Login")
