@@ -1,41 +1,55 @@
 users = {}
+
 print("Welcome to the login system!")
 
 while True:
     print("Please choose an option:")
     print("1. Register")
     print("2. Login")
-    print("3. Exit") 
+    print("3. Exit")
+
     choice = input("Enter your choice (1, 2, or 3): ")
+
     while choice not in ['1', '2', '3']:
-        print("invalid choice. Please try again.")
+        print("Invalid choice. Please try again.")
         choice = input("Enter your choice (1, 2, or 3): ")
+
     if choice == '1':
         username = input("Enter a username: ")
+
         while username == "" or username in users:
             if username == "":
                 print("Username cannot be empty.")
             else:
                 print("Username already exists. Please try again.")
+
             username = input("Enter a username: ")
+
         password = input("Enter a password: ")
         confirm_password = input("Confirm your password: ")
+
         while password != confirm_password:
             print("Passwords do not match.")
             password = input("Enter a password: ")
             confirm_password = input("Confirm your password: ")
-        while password == "":    
-            print("Password cannot be empty.")    
+
+        while password == "":
+            print("Password cannot be empty.")
             password = input("Enter a password: ")
-            users[username] = password
+
+        users[username] = password
+
         print("Registration successful!")
+
     elif choice == '2':
         username = input("Enter your username: ")
         password = input("Enter your password: ")
+
         if username in users and users[username] == password:
             print("Login successful!")
         else:
             print("Invalid username or password.")
+
     elif choice == '3':
         print("Thank you for using the login system!")
-        break  
+        break
