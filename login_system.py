@@ -19,6 +19,8 @@ while True:
                 print("Username already exists. Please try again.")
             username = input("Enter a username: ")
         password = input("Enter a password: ")
+        while password == "":    print("Password cannot be empty.")    
+        password = input("Enter a password: ")
         users[username] = password
         print("Registration successful!")
     elif choice == '2':
